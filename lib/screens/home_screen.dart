@@ -17,6 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController txtTitle = TextEditingController();
   TextEditingController txtDescripation = TextEditingController();
   bool isGrid = false;
+  bool isDarkTheme = false;
 
   getRandomColor() {
     Random random = Random();
@@ -27,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: isDarkTheme ? Colors.blueGrey : Colors.white,
         appBar: AppBar(
           centerTitle: true,
           title: const Text(
@@ -46,7 +48,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  isDarkTheme = !isDarkTheme;
+                });
+              },
               icon: const Icon(Icons.dark_mode_outlined),
             ),
           ],

@@ -14,12 +14,14 @@ class _ToDoAddScreenState extends State<ToDoAddScreen> {
   TextEditingController txtTitle = TextEditingController();
   TextEditingController txtDescripation = TextEditingController();
   String dropdownValue = 'Low';
+  bool isDarkTheme = false;
   var low = ['Low', 'Medium', 'High', 'Urgent'];
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: isDarkTheme ? Colors.blueGrey : Colors.white,
         appBar: AppBar(
           centerTitle: true,
           title: const Text(
@@ -28,7 +30,11 @@ class _ToDoAddScreenState extends State<ToDoAddScreen> {
           ),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  isDarkTheme = !isDarkTheme;
+                });
+              },
               icon: const Icon(Icons.dark_mode),
             ),
           ],
